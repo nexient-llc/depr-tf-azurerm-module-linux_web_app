@@ -27,9 +27,14 @@ docker_image_tag = "1.0.0"
 
 application_settings = {
   provisioner = "Terraform" 
+  WEBSITES_PORT = 5000
 }
 
 http_logs_file_system = {
   retention_in_days = 14
   retention_in_mb = 100
 }
+
+deployment_slots = ["stage"]
+
+enable_system_managed_identity = true

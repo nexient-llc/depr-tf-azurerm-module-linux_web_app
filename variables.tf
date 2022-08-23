@@ -22,12 +22,12 @@ variable "storage_account" {
 }
 
 variable "application_insights" {
-    description = "The Application Insights associated with the function app"
-    type = object ({
-        name = string
-        rg_name = string
-    })
-    default = null
+  description = "The Application Insights associated with the function app"
+  type = object({
+    name    = string
+    rg_name = string
+  })
+  default = null
 }
 
 variable "service_plan" {
@@ -88,7 +88,7 @@ variable "application_stack" {
 }
 
 variable "docker_image_name" {
-  description = "The docker image name. Required only when application_stack = docker"
+  description = "The docker image name. Required only when application_stack = docker. More information on configuring a custom container https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container?pivots=container-linux"
   default     = "sample-app"
 }
 
@@ -178,14 +178,14 @@ variable "cors" {
 
 variable "detailed_error_messages" {
   description = "Should detailed error messages be enabled?"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "failed_request_tracing" {
   description = "Should failed request tracing be enabled?"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "http_logs_file_system" {
@@ -209,14 +209,20 @@ variable "http_logs_azure_blob_storage" {
 
 variable "enable_system_managed_identity" {
   description = "Should system_managed_identity be enabled"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "enable_application_insights" {
   description = "Should app Insights be enabled for the web-app? If enabled, application_insights is required variable."
-  type = bool
-  default = false
+  type        = bool
+  default     = false
+}
+
+variable "deployment_slots" {
+  description = "List of the names of deployment_slots for this app service"
+  type        = list(string)
+  default     = []
 }
 
 variable "custom_tags" {

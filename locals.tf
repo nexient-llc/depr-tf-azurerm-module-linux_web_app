@@ -1,5 +1,6 @@
 locals {
   is_docker = var.application_stack == "docker" ? true : false
+
   default_tags = {
     "provisioner" : "Terraform"
   }
@@ -26,8 +27,8 @@ locals {
     DOCKER_REGISTRY_SERVER_URL      = "https://${data.azurerm_container_registry.acr[0].login_server}"
   } : {}
   app_insights_app_settings = var.enable_application_insights ? {
-    APPINSIGHTS_INSTRUMENTATIONKEY = data.azurerm_application_insights.app_insights[0].instrumentation_key
-    APPLICATIONINSIGHTS_CONNECTION_STRING = data.azurerm_application_insights.app_insights[0].connection_string
+    APPINSIGHTS_INSTRUMENTATIONKEY             = data.azurerm_application_insights.app_insights[0].instrumentation_key
+    APPLICATIONINSIGHTS_CONNECTION_STRING      = data.azurerm_application_insights.app_insights[0].connection_string
     ApplicationInsightsAgent_EXTENSION_VERSION = "~2"
   } : {}
 }
