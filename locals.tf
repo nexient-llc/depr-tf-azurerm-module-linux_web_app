@@ -21,11 +21,14 @@ locals {
 
   is_http_logs = (var.http_logs_file_system != null || var.http_logs_azure_blob_storage != null) ? true : false
 
+  # Docker specific app settings
   docker_app_settings = local.is_docker ? {
     DOCKER_REGISTRY_SERVER_PASSWORD = data.azurerm_container_registry.acr[0].admin_password
     DOCKER_REGISTRY_SERVER_USERNAME = data.azurerm_container_registry.acr[0].admin_username
     DOCKER_REGISTRY_SERVER_URL      = "https://${data.azurerm_container_registry.acr[0].login_server}"
   } : {}
+
+  # App Insights specific app settings
   app_insights_app_settings = var.enable_application_insights ? {
     APPINSIGHTS_INSTRUMENTATIONKEY             = data.azurerm_application_insights.app_insights[0].instrumentation_key
     APPLICATIONINSIGHTS_CONNECTION_STRING      = data.azurerm_application_insights.app_insights[0].connection_string

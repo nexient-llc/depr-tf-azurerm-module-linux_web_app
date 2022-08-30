@@ -154,10 +154,8 @@ resource "azurerm_linux_web_app_slot" "app_slot" {
     }
   }
   site_config {
-    always_on = lookup(var.site_config, "always_on", false)
-    #api_management_config_id = lookup(var.site_config, "api_management_config_id", null)
-    app_command_line = lookup(var.site_config, "app_command_line", null)
-    #remote_debugging         = lookup(var.site_config, "remote_debugging", false)
+    always_on                = lookup(var.site_config, "always_on", false)
+    app_command_line         = lookup(var.site_config, "app_command_line", null)
     remote_debugging_version = lookup(var.site_config, "remote_debugging_version", null)
     http2_enabled            = lookup(var.site_config, "http2enabled", true)
     minimum_tls_version      = lookup(var.site_config, "minimum_tls_version", 1.2)

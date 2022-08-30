@@ -150,7 +150,7 @@ variable "site_config" {
 }
 
 variable "application_settings" {
-  description = "The environment variables passed in to the web-app"
+  description = "The environment variables passed in to the web-app. Users can pass in any environment variable to be available to the web-app. System related app settings allowed to override are always_on, http2_enabled, minimum_tls_version, load_balancing_mode, scm_minimum_tls_version, health_check_path, worker_count, app_command_line, remote_debugging_version"
   type        = map(string)
   default     = {}
 }
