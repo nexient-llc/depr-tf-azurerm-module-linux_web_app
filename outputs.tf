@@ -23,6 +23,11 @@ output "web_app_linux_slot_ids_map" {
   value       = { for key, value in azurerm_linux_web_app_slot.app_slot : key => value.id }
 }
 
+output "web_app_linux_slot_identities" {
+  description = "The list of identity blocks for deployment slots. This output is essential to add to the access policies of key-vault"
+  value = { for key, slot in azurerm_linux_web_app_slot.app_slot : key => slot.identity[0] }
+}
+
 output "connection_strings_list" {
   description = "A list of connection string names"
   value       = [for conn in azurerm_linux_web_app.web_app.connection_string : conn.value]
