@@ -111,7 +111,7 @@ resource "azurerm_linux_web_app" "web_app" {
       mount_path   = storage_account.value.mount_path
       account_name = data.azurerm_storage_account.storage_account.name
       access_key   = data.azurerm_storage_account.storage_account.primary_access_key
-      share_name   = storage_account.share_name
+      share_name   = storage_account.value.share_name
     }
   }
 
@@ -223,7 +223,7 @@ resource "azurerm_linux_web_app_slot" "app_slot" {
       mount_path   = storage_account.value.mount_path
       account_name = data.azurerm_storage_account.storage_account.name
       access_key   = data.azurerm_storage_account.storage_account.primary_access_key
-      share_name   = storage_account.share_name
+      share_name   = storage_account.value.share_name
     }
   }
 
