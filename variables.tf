@@ -1,6 +1,6 @@
 # Common Variables
 variable "resource_group" {
-  description = "target resource group resource mask"
+  description = "The resource group in which all the infrastructure would be created"
   type = object({
     name     = string
     location = string
@@ -210,13 +210,13 @@ variable "http_logs_azure_blob_storage" {
 }
 
 variable "enable_system_managed_identity" {
-  description = "Should system_managed_identity be enabled"
+  description = "Should system_managed_identity be enabled?"
   type        = bool
   default     = false
 }
 
 variable "enable_application_insights" {
-  description = "Should app Insights be enabled for the web-app? If enabled, application_insights is required variable."
+  description = "Should app Insights be enabled for the web-app? If enabled, application_insights is a required variable."
   type        = bool
   default     = false
 }
@@ -228,7 +228,7 @@ variable "deployment_slots" {
 }
 
 variable "custom_tags" {
-  description = "Custom Tags"
+  description = "Custom Tags for the resources"
   type        = map(string)
   default     = {}
 }
