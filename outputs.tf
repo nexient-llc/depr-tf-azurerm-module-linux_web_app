@@ -3,6 +3,11 @@ output "web_app_id" {
   value       = azurerm_linux_web_app.web_app.id
 }
 
+output "web_app_name" {
+  description = "Name of the web-app"
+  value = azurerm_linux_web_app.web_app.name
+}
+
 output "default_host_name" {
   description = "Default host_name of the Linux Web App"
   value       = azurerm_linux_web_app.web_app.default_hostname
