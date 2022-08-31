@@ -2,7 +2,11 @@
 
 ## Overview
 
-This terraform module will provision an Azure Web app (linux), optional deployment stots, configurations and all its dependencies.
+This terraform module will provision an Azure Web app (linux), optional deployment stots, configurations and all its dependencies. This module would require the following resources to be already created
+- Resource Group
+- Storage Account
+- Service Plan
+- Container Registry (if application_stack='docker')
 
 ## Pre-Commit hooks
 [.pre-commit-config.yaml](.pre-commit-config.yaml) file defines certain `pre-commit` hooks that are relevant to terraform, golang and common linting tasks. There are no custom hooks added.
