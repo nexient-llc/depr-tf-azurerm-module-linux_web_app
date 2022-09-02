@@ -120,9 +120,9 @@ resource "azurerm_linux_web_app" "web_app" {
   dynamic "storage_account" {
     for_each = var.storage_mounts
     content {
-      name         = storage_account.key
-      type         = storage_account.value.mount_type
-      mount_path   = storage_account.value.mount_path
+      name       = storage_account.key
+      type       = storage_account.value.mount_type
+      mount_path = storage_account.value.mount_path
       # Storage account can be passed in from vars file or use the implicit storage account of the module
       account_name = coalesce(storage_account.value.account_name, "notset") == "notset" ? data.azurerm_storage_account.storage_account.name : storage_account.value.account_name
       access_key   = coalesce(storage_account.value.access_key, "notset") == "notset" ? data.azurerm_storage_account.storage_account.primary_access_key : storage_account.value.access_key
@@ -231,9 +231,9 @@ resource "azurerm_linux_web_app_slot" "app_slot" {
   dynamic "storage_account" {
     for_each = var.storage_mounts
     content {
-      name         = storage_account.key
-      type         = storage_account.value.mount_type
-      mount_path   = storage_account.value.mount_path
+      name       = storage_account.key
+      type       = storage_account.value.mount_type
+      mount_path = storage_account.value.mount_path
       # Storage account can be passed in from vars file or use the implicit storage account of the module
       account_name = coalesce(storage_account.value.account_name, "notset") == "notset" ? data.azurerm_storage_account.storage_account.name : storage_account.value.account_name
       access_key   = coalesce(storage_account.value.access_key, "notset") == "notset" ? data.azurerm_storage_account.storage_account.primary_access_key : storage_account.value.access_key

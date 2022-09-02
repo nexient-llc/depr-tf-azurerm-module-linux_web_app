@@ -85,11 +85,11 @@ variable "https_only" {
 variable "storage_mounts" {
   description = "A map of storage mounts for the web-app. The account_name and access_key are optional and will be fetched from the storage_account variable if not specified. The share_name is either a blob or a fileshare in the storage_account. The mount_type can be either AzureFiles or AzureBlob"
   type = map(object({
-    share_name = string
-    mount_type = string
-    mount_path = string
+    share_name   = string
+    mount_type   = string
+    mount_path   = string
     account_name = string
-    access_key = string
+    access_key   = string
   }))
   default = {}
 }

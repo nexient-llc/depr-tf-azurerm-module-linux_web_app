@@ -19,7 +19,7 @@ output "web_app_id" {
 
 output "web_app_name" {
   description = "Name of the web-app"
-  value = azurerm_linux_web_app.web_app.name
+  value       = azurerm_linux_web_app.web_app.name
 }
 
 output "default_host_name" {
@@ -44,7 +44,7 @@ output "web_app_linux_slot_ids_map" {
 
 output "web_app_linux_slot_identities" {
   description = "The list of identity blocks for deployment slots. This output is essential to add to the access policies of key-vault"
-  value = { for key, slot in azurerm_linux_web_app_slot.app_slot : key => slot.identity[0] }
+  value       = { for key, slot in azurerm_linux_web_app_slot.app_slot : key => slot.identity[0] }
 }
 
 output "connection_strings_list" {
