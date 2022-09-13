@@ -144,7 +144,6 @@ resource "azurerm_linux_web_app" "web_app" {
     ignore_changes = [
       site_config[0].application_stack[0].docker_image,
       site_config[0].application_stack[0].docker_image_tag
-
     ]
   }
 }
@@ -250,4 +249,11 @@ resource "azurerm_linux_web_app_slot" "app_slot" {
   }
 
   tags = local.tags
+
+  lifecycle {
+    ignore_changes = [
+      site_config[0].application_stack[0].docker_image,
+      site_config[0].application_stack[0].docker_image_tag
+    ]
+  }
 }
