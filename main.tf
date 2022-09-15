@@ -150,7 +150,9 @@ resource "azurerm_linux_web_app" "web_app" {
   lifecycle {
     ignore_changes = [
       site_config[0].application_stack[0].docker_image,
-      site_config[0].application_stack[0].docker_image_tag
+      site_config[0].application_stack[0].docker_image_tag,
+      app_settings,
+      connection_string
     ]
   }
 }
@@ -260,7 +262,9 @@ resource "azurerm_linux_web_app_slot" "app_slot" {
   lifecycle {
     ignore_changes = [
       site_config[0].application_stack[0].docker_image,
-      site_config[0].application_stack[0].docker_image_tag
+      site_config[0].application_stack[0].docker_image_tag,
+      app_settings,
+      connection_string
     ]
   }
 }
